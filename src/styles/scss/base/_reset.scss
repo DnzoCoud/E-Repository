@@ -1,5 +1,5 @@
 @use "./fonts";
-@use "./variables" as variables;
+@use "../abstracts/variables" as variables;
 
 * {
   padding: 0;
