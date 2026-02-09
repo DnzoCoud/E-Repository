@@ -1,7 +1,8 @@
 
 //Fonts
 $font-sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-$font-general: "Coolvetica", $font-sans;
+$font-especial: "Coolvetica", $font-sans;
+$font-general: "SN Pro", $font-sans;
 $font-titles: "SuperFortune", $font-general;
 
 //Font size
@@ -13,3 +14,5 @@ $font-size-title: 80px;
 $primary-color: #242424;
 $white-color: #ffffff;
 $secondary-color: #5726b3;
+
+$radius-md: 25px;

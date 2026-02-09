@@ -1,0 +1,17 @@
+---
+import { getCollection } from "astro:content"
+
+const sections = (await getCollection('sections'))
+  .sort((a, b) => a.data.navOrder - b.data.navOrder)
+---
+
+<div class="navbar size-full">
+  <nav class="navbar__nav size-full items-center flex">
+    <ul>
+      {sections.map(s => (
+        <li><a href={`#${s.data.anchorId}`}>{s.data.navLabel}</a></li>
+      ))}
+
+    </ul>
+  </nav>
+</div>

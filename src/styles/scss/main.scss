@@ -2,5 +2,8 @@
 /* Base */
 @use "./base/reset";
 
+/* Layout */
+@use "./layout/container";
+
 /* Components */
 @use "./components/index";

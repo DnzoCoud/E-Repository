@@ -1,0 +1,23 @@
+@use "../abstracts/variables" as vars;
+
+.navbar {
+  background-color: vars.$white-color;
+  border-radius: vars.$radius-md;
+  overflow: hidden;
+  padding-inline: 32px;
+
+  &__nav {
+    & ul {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+      height: inherit;
+      
+      & li > a {
+        font-family: vars.$font-general;
+        text-transform: uppercase;
+        font-weight: 800;
+      }
+    }
+  }
+}
