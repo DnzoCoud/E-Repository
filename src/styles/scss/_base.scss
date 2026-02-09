@@ -1,0 +1,19 @@
+@use "./fonts";
+@use "./variables" as variables;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: variables.$font-sans;
+  background-color: variables.$primary-color;
+}
+
+h1,
+h2,
+h3 {
+  font-family: variables.$font-general;
+}
