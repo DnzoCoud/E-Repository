@@ -1,8 +1,13 @@
 ---
+import Hero from "./Hero.astro"
 import Navbar from "./Navbar.astro"
 ---
 
 <header class="header container">
-  <h2 class="header__title">DANIEL</h2>
-  <Navbar/>
+  <div class="header__nav-content">
+    <h2 class="header__title" data-aos="fade-right">DANIEL</h2>
+    <Navbar/>
+  </div>
+
+  <Hero/>
 </header>

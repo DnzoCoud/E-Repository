@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import "../styles/scss/main.scss";
 import Header from "../components/Header/Header.astro";
+import 'aos/dist/aos.css';
 ---
 
 <!doctype html>
@@ -17,5 +18,10 @@ import Header from "../components/Header/Header.astro";
 	<body>
 		<Header/>
 		<slot />
+
+		<script>
+			import AOS from "aos";
+      AOS.init();
+		</script>
 	</body>
 </html>

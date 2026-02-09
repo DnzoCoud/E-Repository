@@ -1,0 +1,27 @@
+---
+import { getCollection } from "astro:content"
+
+const heroChips = (await getCollection('heroChips')).sort((a, b) => a.data.order - b.data.order)
+const socialIds = new Set(["github", "linkedln"])
+
+// const socialChips = heroChips.filter(hc => socialIds.has(hc.data.id))
+const otherChips  = heroChips.filter(hc => !socialIds.has(hc.data.id))
+
+const emphasisPhrase = "FULLSTACK DEVELOPER"
+
+---
+<div class="hero-banner">
+  <div class="hero-banner__chips" data-aos="fade-right">
+    {otherChips.map(hc => (
+      <div class="chip" data-id={hc.id}>
+        <span>{hc.data.title}</span>
+        <p>{hc.data.desc}</p>
+      </div>
+    ))}
+  </div>
+
+  <div class="hero-banner__emphasis">
+    <h1 data-aos="fade-down">{emphasisPhrase}</h1>
+    <span>I am</span>
+  </div>
+</div>

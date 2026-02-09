@@ -1,0 +1,55 @@
+@use "../abstracts/variables" as vars;
+
+.hero-banner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &__chips {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    & .chip {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      color: vars.$white-color;
+      text-transform: uppercase;
+
+      & span {
+        font-weight: 800;
+        font-size: 14px;
+      }
+
+      & p {
+        font-size: 12px;
+        font-weight: 600;
+      }
+    }
+  }
+
+  &__emphasis {
+    position: relative;
+
+    & h1 {
+      text-transform: uppercase;
+      color: vars.$white-color;
+      font-family: vars.$font-titles;
+      font-size: 120px;
+      text-align: center;
+      letter-spacing: 6px;
+    }
+
+    & span {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: vars.$font-subtitles;
+      font-size: 60px;
+      color: vars.$emphasis-color;
+      letter-spacing: 8px;
+      line-height: 50px;
+    }
+  }
+}

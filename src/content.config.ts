@@ -8,4 +8,13 @@ const sections = defineCollection({
   })
 })
 
-export const collections = { sections }
+const heroChips = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    desc: z.string(),
+    id: z.string(),
+    order: z.number()
+  })
+})
+
+export const collections = { sections, heroChips }

@@ -10,6 +10,7 @@
 body {
   font-family: variables.$font-sans;
   background-color: variables.$primary-color;
+  overflow: hidden;
 }
 
 h1,
