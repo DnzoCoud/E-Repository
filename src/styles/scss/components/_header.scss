@@ -5,6 +5,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 20px;
+  height: 40px;
 
   &__title {
     font-family: variables.$font-titles;
