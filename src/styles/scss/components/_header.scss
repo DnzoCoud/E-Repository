@@ -5,7 +5,21 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
+  transition: all .3s ease-in;
 
+  &__bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+
+    transition: background .25s ease, backdrop-filter .25s ease, box-shadow .25s ease;
+  }
+
+  &__hero {
+    padding-top: 64px;
+  }
 
   &__nav-content {
     display: flex;
@@ -20,4 +34,11 @@
     color: variables.$white-color;
     font-size: variables.$font-size-h3;
   }
+}
+
+#siteHeader.is-scrolled .header__bar{
+  backdrop-filter: blur(10px);
+  background: rgba(0,0,0,.6);
+  border-radius: 20px;
+  top: 20px;
 }

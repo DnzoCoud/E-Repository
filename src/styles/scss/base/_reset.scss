@@ -2,15 +2,14 @@
 @use "../abstracts/variables" as variables;
 
 * {
-  padding: 0;
-  margin: 0;
   box-sizing: border-box;
 }
 
 body {
   font-family: variables.$font-sans;
   background-color: variables.$primary-color;
-  overflow: hidden;
+  padding: 0;
+  margin: 0;
 }
 
 h1,

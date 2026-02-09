@@ -3,11 +3,37 @@ import Hero from "./Hero.astro"
 import Navbar from "./Navbar.astro"
 ---
 
-<header class="header container">
-  <div class="header__nav-content">
-    <h2 class="header__title" data-aos="fade-right">DANIEL</h2>
-    <Navbar/>
+<header class="header" id="siteHeader">
+  <!-- SOLO esto se queda sticky -->
+  <div class="header__bar container">
+    <div class="header__nav-content">
+      <h2 class="header__title" data-aos="fade-right">DANIEL</h2>
+      <Navbar />
+    </div>
   </div>
 
-  <Hero/>
+  <!-- esto ya no se pega -->
+  <div class="header__hero container">
+    <Hero />
+  </div>
 </header>
+
+<script is:inline>
+  const header = document.querySelector('#siteHeader')
+  const OFFSET = 230;
+
+  let ticking = false;
+
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+
+    requestAnimationFrame(() => {
+      header?.classList.toggle("is-scrolled", window.scrollY > OFFSET);
+      ticking = false;
+    });
+  }
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+</script>

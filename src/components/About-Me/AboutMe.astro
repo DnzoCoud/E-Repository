@@ -1,0 +1,31 @@
+---
+import { Image } from "astro:assets";
+import WormHole from "../../assets/worm-hole.webp"
+import Typewriter from "../Typewriter.astro";
+
+const words = ["Curious by default.", "Deep focus", "Quiet progress", "Refine always"];
+
+---
+
+<section class="container" aria-label="About me Section" id="about-me">
+  <div class="about-section">
+    <div class="about-section__image">
+      <Image src={WormHole} alt={"Worm hole 3d"}/>
+    </div>
+    <div class="about-section__content">
+      <div class="about-section__texts">
+        <h2>About me</h2>
+        <p>  I like understanding why things work, not just making them work.
+          I enjoy building clean, well-thought-out, and scalable products.
+          <br>
+          If something can be simplified, I simplify it.
+          <br>
+          If it can be optimized, I optimize it.
+          <br>
+          If it doesn’t make sense… I question it.
+        </p>
+        <Typewriter words={words} id="about-tw" class="about-section__tw tw" pause={1200} />
+      </div>
+    </div>
+  </div>
+</section>

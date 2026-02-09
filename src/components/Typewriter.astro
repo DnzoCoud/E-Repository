@@ -1,0 +1,73 @@
+---
+const {
+  words = [],
+  typingSpeed = 80,
+  deletingSpeed = 45,
+  pause = 900,
+  startDelay = 0,
+  as: Tag = "span",
+  id = "tw",
+  class: className = "",
+} = Astro.props;
+---
+
+<Tag id={id} class={className} aria-live="polite"></Tag>
+
+<script is:inline define:vars={{ words, typingSpeed, deletingSpeed, pause, startDelay, id }}>
+  const el = document.getElementById(id);
+  if (!el || !Array.isArray(words) || words.length === 0) return;
+
+  let wordIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
+
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+  let cancelled = false;
+  document.addEventListener("astro:before-swap", () => { cancelled = true; }, { once: true });
+
+  async function loop() {
+    if (cancelled) return;
+
+    const current = words[wordIndex];
+
+    if (!deleting) {
+      charIndex++;
+      el.textContent = current.slice(0, charIndex);
+
+      if (charIndex === current.length) {
+        await sleep(pause);
+        deleting = true;
+      } else {
+        await sleep(typingSpeed);
+      }
+    } else {
+      charIndex--;
+      el.textContent = current.slice(0, Math.max(0, charIndex));
+
+      if (charIndex === 0) {
+        deleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        await sleep(250);
+      } else {
+        await sleep(deletingSpeed);
+      }
+    }
+
+    requestAnimationFrame(loop);
+  }
+
+  (async () => {
+    if (startDelay) await sleep(startDelay);
+    loop();
+  })();
+</script>
+
+<style>
+  .tw-caret{
+    display:inline-block;
+    margin-left:.15em;
+    animation: twBlink .9s steps(1) infinite;
+  }
+  @keyframes twBlink { 50% { opacity: 0; } }
+</style>

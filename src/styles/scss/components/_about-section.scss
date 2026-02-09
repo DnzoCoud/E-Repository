@@ -1,0 +1,47 @@
+@use "../abstracts/variables" as vars;
+
+.about-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+
+  &__image {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    padding-top: 65%;
+
+    & img {
+      width: 100%;
+      position: absolute;
+      height: 100%;
+      inset: 0;
+      object-fit: cover;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__texts {
+    color: vars.$white-color;
+    text-transform: uppercase;
+    height: 100%;
+    position: relative;
+
+    & h2 {
+      font-size: 22px;
+      font-weight: 600;
+    }
+  }
+
+  &__tw {
+    font-family: vars.$font-subtitles;
+    position: absolute;
+    font-size: 32px;
+    color: vars.$tertiary-color;
+  }
+}
