@@ -9,6 +9,11 @@ const otherChips  = heroChips.filter(hc => !socialIds.has(hc.data.id))
 
 const emphasisPhrase = "FULLSTACK DEVELOPER"
 
+const words = ["I am", "Dani", "a Developer", "a Builder", "a Papucho", "sleep-deprived"];
+const typingSpeed = 70;
+const deletingSpeed = 35;
+const pause = 1100;
+
 ---
 <div class="hero-banner">
   <div class="hero-banner__chips" data-aos="fade-right">
@@ -22,6 +27,59 @@ const emphasisPhrase = "FULLSTACK DEVELOPER"
 
   <div class="hero-banner__emphasis">
     <h1 data-aos="fade-down">{emphasisPhrase}</h1>
-    <span>I am</span>
+    <span class="typewriter">
+      <strong id="tw-text"></strong><span class="tw-caret" aria-hidden="true">|</span>
+    </span>
   </div>
 </div>
+
+<script is:inline define:vars={{ words, typingSpeed, deletingSpeed, pause }}>
+  const el = document.getElementById("tw-text");
+  if (!el || !Array.isArray(words) || words.length === 0) return;
+
+  let wordIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
+
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+  async function loop() {
+    const current = words[wordIndex];
+
+    if (!deleting) {
+      charIndex++;
+      el.textContent = current.slice(0, charIndex);
+
+      if (charIndex === current.length) {
+        await sleep(pause);
+        deleting = true;
+      } else {
+        await sleep(typingSpeed);
+      }
+    } else {
+      charIndex--;
+      el.textContent = current.slice(0, Math.max(0, charIndex));
+
+      if (charIndex === 0) {
+        deleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        await sleep(250);
+      } else {
+        await sleep(deletingSpeed);
+      }
+    }
+
+    requestAnimationFrame(loop);
+  }
+
+  loop();
+</script>
+
+<style>
+  .tw-caret{
+    display:inline-block;
+    margin-left:.15em;
+    animation: twBlink .9s steps(1) infinite;
+  }
+  @keyframes twBlink { 50% { opacity: 0; } }
+</style>
